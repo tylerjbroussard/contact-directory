@@ -23,7 +23,7 @@ const Home = () => {
   })
 
   const handleFilteredData = (filters) => {
-    if (filters.type.State === 'All') {
+    if (filters.type == 'State' && filters.value === 'All') {
       setFilteredContactData(contactData)
     } else {
       const filteredData = contactData.filter(data => data[filters.type] === filters.value)

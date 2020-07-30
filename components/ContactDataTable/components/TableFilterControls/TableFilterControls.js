@@ -4,7 +4,6 @@ import {
   Box,
   FormControl,
   InputLabel,
-  MenuItem,
   Select,
   Typography,
 } from '@material-ui/core'
@@ -21,6 +20,18 @@ const TableFilterControls = (props) => {
   const theme = useTheme()
 
   const useStyles = makeStyles(() => ({
+    filterBar: {
+      alignItems: 'center',
+      backgroundColor: theme.palette.background.light,
+      borderTopLeftRadius: '3px',
+      borderTopRightRadius: '3px',
+      display: 'flex',
+      justifyContent: 'flex-end',
+      paddingBottom: theme.spacing(2),
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(3),
+      paddingTop: theme.spacing(2),
+    },
     formControl: {
       marginLeft: theme.spacing(3),
       minWidth: 200,
@@ -38,14 +49,7 @@ const TableFilterControls = (props) => {
   }
   
   return (
-    <Box
-      alignItems="center"
-      bg="backgrounds.light"
-      display="flex"
-      justifyContent="flex-end"
-      py={2}
-      px={3}
-    >
+    <Box className={classes.filterBar}>
       <Typography>Filters: </Typography>
       <FormControl className={classes.formControl}>
         <InputLabel id="by-state">By State</InputLabel>

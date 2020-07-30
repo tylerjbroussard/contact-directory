@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {
+  Box,
   Table,
   TableBody,
   TableCell,
@@ -52,64 +53,63 @@ const ContactDataTable = ({ contactData, handleFilteredData } = props) => {
         handleStateSelection={handleStateSelection}
         selectedState={filterState}
       />
-      <TableContainer>
-        <Table aria-label="Prosecutor Contact Data Table">
-          <TableHead>
-            <TableRow>
-              <TableCell className={classes.tableHeading}>State</TableCell>
-              <TableCell className={classes.tableHeading}>District/County</TableCell>
-              <TableCell className={classes.tableHeading}>Title</TableCell>
-              <TableCell className={classes.tableHeading}>Name</TableCell>
-              <TableCell className={classes.tableHeading}>Email</TableCell>
-              <TableCell className={classes.tableHeading}>Phone Number</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-          {(rowsPerPage > 0
-            ? contactData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : contactData
-          ).map((row) => {
-              // "State"
-              // "District/County"
-              // "Title"
-              // "First"
-              // "Last Name"
-              // "Email"
-              // "Phone Number"
-              return (
-                <TableRow key={`${row.nameState}${row.First}${row['Last Name']}`}>
-                  <TableCell align="left">{row.State}</TableCell>
-                  <TableCell align="left">{row['District/County']}</TableCell>
-                  <TableCell align="left">{row.Title}</TableCell>
-                  <TableCell component="th" scope="row">
-                    {row.First} {row['Last Name']}
-                  </TableCell>
-                  <TableCell align="left">{row.Email.includes('@') && row.Email}</TableCell>
-                  <TableCell align="left">{row['Phone Number']}</TableCell>
-                </TableRow>
-              )
-            })}
-          </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TablePagination
-                rowsPerPageOptions={[10, 25, 50, 100, { label: 'All', value: -1 }]}
-                colSpan={6}
-                count={contactData.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                SelectProps={{
-                  inputProps: { 'aria-label': 'rows per page' },
-                  native: true,
-                }}
-                onChangePage={handleChangePage}
-                onChangeRowsPerPage={handleChangeRowsPerPage}
-                ActionsComponent={TablePaginationControls}
-              />
-            </TableRow>
-          </TableFooter>
-        </Table>
-      </TableContainer>
+      {contactData.length ? (
+        <TableContainer>
+          <Table aria-label="Prosecutor Contact Data Table">
+            <TableHead>
+              <TableRow>
+                <TableCell className={classes.tableHeading}>State</TableCell>
+                <TableCell className={classes.tableHeading}>District/County</TableCell>
+                <TableCell className={classes.tableHeading}>Title</TableCell>
+                <TableCell className={classes.tableHeading}>Name</TableCell>
+                <TableCell className={classes.tableHeading}>Email</TableCell>
+                <TableCell className={classes.tableHeading}>Phone Number</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+            {(rowsPerPage > 0
+              ? contactData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : contactData
+            ).map((row) => {
+
+                console.log(row)
+                return (
+                  <TableRow key={`${row.nameState}${row.First}${row['Last Name']}`}>
+                    <TableCell align="left">{row.State}</TableCell>
+                    <TableCell align="left">{row['District/County']}</TableCell>
+                    <TableCell align="left">{row.Title}</TableCell>
+                    <TableCell component="th" scope="row">
+                      {row.First} {row['Last Name']}
+                    </TableCell>
+                    <TableCell align="left">{row.Email.includes('@') && row.Email}</TableCell>
+                    <TableCell align="left">{row['Phone Number']}</TableCell>
+                  </TableRow>
+                )
+              })}
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[10, 25, 50, 100, { label: 'All', value: -1 }]}
+                  colSpan={6}
+                  count={contactData.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: { 'aria-label': 'rows per page' },
+                    native: true,
+                  }}
+                  onChangePage={handleChangePage}
+                  onChangeRowsPerPage={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationControls}
+                />
+              </TableRow>
+            </TableFooter>
+          </Table>
+        </TableContainer>
+      ):(
+        <Box p={4}>No data available for these filters.</Box>
+      )}
     </Paper>
   )
 }
