@@ -65,7 +65,7 @@ const Header = () => {
               Home
             </Box>
           </Link>
-          <Link
+          {/* <Link
             align='center'
             color='inherit'
             component={NextLink}
@@ -88,7 +88,7 @@ const Header = () => {
             <Box px={2} py={1}>
               Resources
             </Box>
-          </Link>
+          </Link> */}
 
           <Link
             align='center'
