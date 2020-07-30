@@ -49,18 +49,6 @@ const Header = () => {
             href='/'
             variant='body1'
           >
-            <Box color='secondary.main' px={2} py={1}>
-              Police Killings Dashboard
-            </Box>
-          </Link>
-          <Link
-            align='center'
-            color='inherit'
-            component={NextLink}
-            display='block'
-            href='/'
-            variant='body1'
-          >
             <Box px={2} py={1}>
               Home
             </Box>
