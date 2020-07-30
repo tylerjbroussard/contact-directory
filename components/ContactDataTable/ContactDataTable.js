@@ -33,7 +33,7 @@ const ContactDataTable = ({ contactData } = props) => {
 
   const useStylesTable = makeStyles((theme) => ({
     tableHeading: {
-      background: theme.palette.background.default,
+      background: theme.palette.background.light, // TODO: Switch to bgColor value on the TableHead > TableRow element 
       fontSize: '12px',
       textTransform: 'uppercase',
     },
